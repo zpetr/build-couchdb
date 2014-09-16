@@ -94,7 +94,7 @@ namespace :erlang do
         end
 
         OTP_SKIP_COMPILE.each do |lib|
-		  if Dir.exists?("#{source}/lib/#{lib}")
+		  if File.directory?("#{source}/lib/#{lib}")
             skip_otp_app(lib) unless otp_app_useful?(lib)
 		  end
         end
@@ -110,7 +110,7 @@ namespace :erlang do
         # Redo the SKIP files. This works around lib/odbc/configure removing its own SKIP file for some reason. Perhaps other
         # modules do too.
         OTP_SKIP_COMPILE.each do |lib|
-		  if Dir.exists?("#{source}/lib/#{lib}")
+		  if File.directory?("#{source}/lib/#{lib}")
             skip_otp_app(lib) unless otp_app_useful?(lib)
 		  end
         end
@@ -149,7 +149,7 @@ namespace :erlang do
     lib = "#{erlang}/lib"
 
     (OTP_REMOVE + OTP_SKIP_COMPILE).each do |component|
-	  if Dir.exists?("#{lib}/#{component}")
+	  if File.directory?("#{lib}/#{component}")
         sh "rm -rf #{lib}/#{component}-*" unless otp_app_useful?(component)
 	  end	
     end
