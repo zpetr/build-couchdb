@@ -7,3 +7,7 @@
 [submodule "dependencies/gnulib"]
 	path = dependencies/gnulib
 	url = git://git.savannah.gnu.org/gnulib.git
+[submodule "dependencies/couchdb"]
+	path = dependencies/couchdb
+	url = git://github.com/apache/couchdb.git
+	branch = 1.6.x
